@@ -1,2 +1,1 @@
-# beauty-product-monorepo
-A repository for a beauty product monorepo with Angular frontend and NestJS backend
+This repository is empty. Any task executed on it should be considered a new capability and needs to be created.
