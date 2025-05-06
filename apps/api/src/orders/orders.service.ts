@@ -1,36 +1,40 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Order } from '../models/order.model';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 
 @Injectable()
 export class OrdersService {
-  constructor(
-    @InjectRepository(Order)
-    private readonly orderRepository: Repository<Order>,
-  ) {}
+  constructor(private readonly prismaService: PrismaService) {}
 
   async create(createOrderDto: CreateOrderDto): Promise<Order> {
-    const order = this.orderRepository.create(createOrderDto);
-    return this.orderRepository.save(order);
+    const order = await this.prismaService.order.create({
+      data: createOrderDto,
+    });
+    return order;
   }
 
   async findAll(): Promise<Order[]> {
-    return this.orderRepository.find();
+    return this.prismaService.order.findMany();
   }
 
   async findOne(id: string): Promise<Order> {
-    return this.orderRepository.findOne(id);
+    return this.prismaService.order.findUnique({
+      where: { id },
+    });
   }
 
   async update(id: string, updateOrderDto: UpdateOrderDto): Promise<Order> {
-    await this.orderRepository.update(id, updateOrderDto);
-    return this.orderRepository.findOne(id);
+    const order = await this.prismaService.order.update({
+      where: { id },
+      data: updateOrderDto,
+    });
+    return order;
   }
 
   async remove(id: string): Promise<void> {
-    await this.orderRepository.delete(id);
+    await this.prismaService.order.delete({
+      where: { id },
+    });
   }
 }
