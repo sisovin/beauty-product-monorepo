@@ -1,0 +1,27 @@
+<footer>
+  <div class="footer-sections">
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>Learn more about our company and values.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Newsletter</h3>
+      <form (ngSubmit)="onSubmitNewsletter(newsletterForm)" #newsletterForm="ngForm">
+        <input type="email" name="email" ngModel required placeholder="Enter your email">
+        <button type="submit" [disabled]="newsletterForm.invalid">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} Beauty Product. All rights reserved.</p>
+  </div>
+</footer>

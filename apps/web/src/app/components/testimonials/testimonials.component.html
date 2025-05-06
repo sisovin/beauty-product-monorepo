@@ -1,0 +1,14 @@
+<div class="testimonials-carousel">
+  <div class="testimonial-card" *ngFor="let testimonial of testimonials; let i = index" [class.active]="i === currentIndex">
+    <div class="testimonial-content">
+      <h3 class="testimonial-user">{{ testimonial.user }}</h3>
+      <p class="testimonial-review">{{ testimonial.review }}</p>
+      <div class="testimonial-rating">
+        <span *ngFor="let star of getStarArray(testimonial.rating)" class="star">&#9733;</span>
+        <span *ngFor="let star of getStarArray(5 - testimonial.rating)" class="star empty">&#9734;</span>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control prev" (click)="prevSlide()">&#10094;</button>
+  <button class="carousel-control next" (click)="nextSlide()">&#10095;</button>
+</div>
