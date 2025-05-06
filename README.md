@@ -1,192 +1,147 @@
 # Beauty Product Monorepo
 
-This repository contains the code for a beauty product application. It is structured as a monorepo with separate folders for the frontend and backend.
+Welcome to the **Beauty Product Monorepo**, a repository designed to house both frontend and backend applications for a beauty products platform. This repository is structured as a **monorepo**, enabling seamless collaboration, code sharing, and development across multiple projects.
 
-## Repository Structure
+---
 
-```
-.
-├── .nx/
-├── apps/
-│   ├── web/                   # Angular 19 Frontend
-│   │   ├── src/
-│   │   │   ├── app/
-│   │   │   │   ├── components/
-│   │   │   │   │   ├── header/
-│   │   │   │   │   │   ├── header.component.ts
-│   │   │   │   │   │   ├── header.component.html
-│   │   │   │   │   │   ├── header.component.scss
-│   │   │   │   │   │   └── header.component.spec.ts
-│   └── api/                   # NestJS Backend
-│       ├── src/
-│       │   ├── auth/
-│       │   │   ├── auth.controller.ts
-│       │   │   ├── auth.service.ts
-│       │   │   ├── auth.module.ts
-│       │   ├── main.ts
-│       │   ├── app.module.ts
-│       ├── project.json
-│       ├── tsconfig.app.json
-│       ├── tsconfig.json
-│       └── tsconfig.spec.json
-├── libs/
-│   ├── shared/                # Shared Library
-│   │   ├── src/
-│   │   │   ├── lib/
-│   │   │   │   ├── interfaces/
-│   │   │   │   │   ├── product.interface.ts
-│   │   │   │   │   ├── user.interface.ts
-│   │   │   │   │   ├── order.interface.ts
-│   │   │   │   ├── dto/
-│   │   │   │   │   ├── base-response.dto.ts
-│   │   │   │   │   ├── pagination.dto.ts
-│   ├── ui/                    # UI Library
-│   │   ├── src/
-│   │   │   ├── lib/
-│   │   │   │   ├── button/
-│   │   │   │   │   ├── button.component.ts
-│   │   │   │   ├── card/
-│   │   │   │   │   ├── card.component.ts
-│   │   │   │   ├── ui.module.ts
-├── .eslintrc.json
-├── .prettierrc
-├── angular.json
-├── nx.json
-├── package.json
-├── tsconfig.base.json
-└── README.md
-```
+## Table of Contents
 
-## Overview
+- [Monorepo Organization](#monorepo-organization)
+- [Frontend (Angular 19)](#frontend-angular-19)
+- [Backend (NestJS)](#backend-nestjs)
+- [Shared Libraries](#shared-libraries)
+- [Tooling](#tooling)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Angular Frontend
+---
 
-The frontend of this application is built using Angular 19. It includes various components such as the header component, which contains the navigation bar and logo.
+## Monorepo Organization
 
-### NestJS Backend
+This monorepo is organized into two main directories:
 
-The backend of this application is built using NestJS. It includes various modules such as the auth module, which handles user authentication and registration.
+- `apps/`: Contains both the **frontend** (web) and **backend** (api) applications.
+- `libs/`: Contains reusable **shared code** that can be utilized by both applications.
 
-### Shared Library
+This structure ensures code reusability, modularity, and efficient development workflows.
 
-The shared library contains common interfaces and DTOs used across the application. It includes:
+---
 
-- `product.interface.ts`: Defines the `Product` and `Review` interfaces.
-- `user.interface.ts`: Defines the `User` interface.
-- `order.interface.ts`: Defines the `Order` interface.
-- `base-response.dto.ts`: Implements the `BaseResponseDto` class.
-- `pagination.dto.ts`: Implements the `PaginationDto` class.
+## Frontend (Angular 19)
 
-### UI Library
+The frontend application is built using **Angular 19**, leveraging modern web development practices. Key features include:
 
-The UI library contains reusable UI components. It includes:
+- **Component-based architecture**: A clear separation of concerns for scalable and maintainable code.
+- **Feature modules**: Organized modules for better encapsulation and modularity.
+- **Services**: Centralized business logic for reusable and testable code.
+- **Models**: Strongly typed models for improved type safety and consistency.
 
-- `button.component.ts`: A reusable button component.
-- `card.component.ts`: A product card component.
-- `ui.module.ts`: Exports the UI components.
+### Key Directories
 
-## Setup and Run
+- `apps/web`: Angular frontend application.
+- `libs/ui`: Shared library for reusable UI components.
+
+---
+
+## Backend (NestJS)
+
+The backend application is powered by **NestJS**, a progressive Node.js framework for building efficient and scalable server-side applications. Key features include:
+
+- **Modular architecture**: Following NestJS conventions to keep the codebase organized and scalable.
+- **Domain-driven structure**: Separate modules for key domains such as:
+  - **Auth**: User authentication and authorization.
+  - **Products**: Product management.
+  - **Orders**: Order processing and management.
+  - **Users**: User profiles and data management.
+- **Prisma ORM**: Leveraging Prisma for intuitive and efficient database access.
+- **Shared DTOs**: Ensuring consistent request/response validation across services.
+
+### Key Directories
+
+- `apps/api`: NestJS backend application.
+- `libs/shared`: Shared library for common interfaces and DTOs.
+
+---
+
+## Shared Libraries
+
+The `libs/` directory contains libraries that are shared between the frontend and backend applications, promoting reusability and consistency:
+
+- **`shared`**: Contains common interfaces and DTOs used across the monorepo.
+- **`ui`**: Houses reusable UI components for the Angular frontend.
+
+---
+
+## Tooling
+
+This repository uses modern tools to ensure efficient development workflows and maintain high code quality:
+
+- **Nx Workspace**: For managing the monorepo and facilitating dependency graph visualization, caching, and task execution.
+- **ESLint**: For enforcing consistent coding standards.
+- **Prettier**: For automatic code formatting.
+- **Jest**: For unit and integration testing across both applications.
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
-- Docker (optional, for containerized setup)
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [Nx CLI](https://nx.dev/)
 
 ### Installation
 
 1. Clone the repository:
+   ```bash
+   git clone https://github.com/sisovin/beauty-product-monorepo.git
+   cd beauty-product-monorepo
    ```
-   git clone https://github.com/githubnext/workspace-blank.git
-   ```
-2. Navigate to the project directory:
-   ```
-   cd workspace-blank
-   ```
-3. Install the dependencies:
-   ```
+
+2. Install dependencies:
+   ```bash
    npm install
    ```
 
-### Running the Application
+3. Serve the applications:
+   - Frontend:
+     ```bash
+     nx serve web
+     ```
+   - Backend:
+     ```bash
+     nx serve api
+     ```
 
-#### Frontend
+4. Access the frontend in your browser and the backend at the provided API URL.
 
-1. Navigate to the frontend directory:
-   ```
-   cd apps/web
-   ```
-2. Start the Angular development server:
-   ```
-   npm start
-   ```
+---
 
-#### Backend
+## Contributing
 
-1. Navigate to the backend directory:
-   ```
-   cd apps/api
-   ```
-2. Start the NestJS development server:
-   ```
-   npm run start:dev
-   ```
-
-### Docker Setup
-
-1. Build the Docker image:
-   ```
-   docker build -t beauty-product-monorepo .
-   ```
-2. Run the Docker container:
-   ```
-   docker run -p 3000:3000 beauty-product-monorepo
-   ```
-
-### Environment Variables
-
-Create a `.env` file in the root directory and add the following variables:
-
-```
-NODE_ENV=development
-PORT=3000
-JWT_SECRET=your_jwt_secret
-DATABASE_URL=your_database_url
-```
-
-### Testing
-
-#### Frontend
-
-1. Navigate to the frontend directory:
-   ```
-   cd apps/web
-   ```
-2. Run the tests:
-   ```
-   npm test
-   ```
-
-#### Backend
-
-1. Navigate to the backend directory:
-   ```
-   cd apps/api
-   ```
-2. Run the tests:
-   ```
-   npm test
-   ```
-
-## Contribution Guidelines
+We welcome contributions to the Beauty Product Monorepo! To contribute:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'Add new feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Create a new Pull Request.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your feature description"
+   ```
+4. Push your branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a pull request.
 
-## Documentation
+---
 
-For detailed documentation, refer to the `docs/documentation.md` file.
+## License
+
+This project is licensed under the [MIT License](LICENSE).
