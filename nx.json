@@ -1,0 +1,20 @@
+{
+  "npmScope": "beauty-product-monorepo",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "shared": {
+      "tags": []
+    },
+    "ui": {
+      "tags": []
+    }
+  }
+}
