@@ -1,0 +1,94 @@
+.footer-sections {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+  font-size: 1em;
+  color: #666;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  color: #37b6ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #1a9bff;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter-form input[type="email"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.newsletter-form button {
+  background-color: #ff6363;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newsletter-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.newsletter-form button:hover:not(:disabled) {
+  background-color: #ff4a4a;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px;
+  background-color: #e9e9e9;
+}
+
+.footer-bottom p {
+  font-size: 0.9em;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  .footer-sections {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    margin: 10px 0;
+  }
+}

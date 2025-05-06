@@ -1,0 +1,35 @@
+<div class="contact-section">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" type="text" class="form-control" />
+      <div *ngIf="contactForm.get('name').invalid && contactForm.get('name').touched" class="error-message">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" class="form-control" />
+      <div *ngIf="contactForm.get('email').invalid && contactForm.get('email').touched" class="error-message">
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" formControlName="message" class="form-control"></textarea>
+      <div *ngIf="contactForm.get('message').invalid && contactForm.get('message').touched" class="error-message">
+        Message is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">Submit</button>
+  </form>
+
+  <div class="social-media-links">
+    <a href="https://facebook.com" target="_blank" class="social-link">Facebook</a>
+    <a href="https://twitter.com" target="_blank" class="social-link">Twitter</a>
+    <a href="https://instagram.com" target="_blank" class="social-link">Instagram</a>
+  </div>
+</div>
