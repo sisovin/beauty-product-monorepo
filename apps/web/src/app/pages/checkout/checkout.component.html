@@ -1,0 +1,78 @@
+<div class="checkout-container">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <!-- Step 1: Shipping Information -->
+    <div *ngIf="currentStep === 1">
+      <h2>Shipping Information</h2>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" class="form-control" />
+        <div *ngIf="checkoutForm.get('name').invalid && checkoutForm.get('name').touched" class="error-message">
+          Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" formControlName="address" type="text" class="form-control" />
+        <div *ngIf="checkoutForm.get('address').invalid && checkoutForm.get('address').touched" class="error-message">
+          Address is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input id="city" formControlName="city" type="text" class="form-control" />
+        <div *ngIf="checkoutForm.get('city').invalid && checkoutForm.get('city').touched" class="error-message">
+          City is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="postalCode">Postal Code</label>
+        <input id="postalCode" formControlName="postalCode" type="text" class="form-control" />
+        <div *ngIf="checkoutForm.get('postalCode').invalid && checkoutForm.get('postalCode').touched" class="error-message">
+          Postal Code is required.
+        </div>
+      </div>
+      <button type="button" (click)="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 2: Payment Method -->
+    <div *ngIf="currentStep === 2">
+      <h2>Payment Method</h2>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input id="cardNumber" formControlName="cardNumber" type="text" class="form-control" />
+        <div *ngIf="checkoutForm.get('cardNumber').invalid && checkoutForm.get('cardNumber').touched" class="error-message">
+          Card Number is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input id="expiryDate" formControlName="expiryDate" type="text" class="form-control" />
+        <div *ngIf="checkoutForm.get('expiryDate').invalid && checkoutForm.get('expiryDate').touched" class="error-message">
+          Expiry Date is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input id="cvv" formControlName="cvv" type="text" class="form-control" />
+        <div *ngIf="checkoutForm.get('cvv').invalid && checkoutForm.get('cvv').touched" class="error-message">
+          CVV is required.
+        </div>
+      </div>
+      <button type="button" (click)="previousStep()">Previous</button>
+      <button type="button" (click)="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 3: Order Summary -->
+    <div *ngIf="currentStep === 3">
+      <h2>Order Summary</h2>
+      <div class="order-summary">
+        <div *ngFor="let item of cartItems">
+          <p>{{ item.name }} - {{ item.quantity }} x {{ item.price | currency }}</p>
+        </div>
+        <p>Total: {{ totalAmount | currency }}</p>
+      </div>
+      <button type="button" (click)="previousStep()">Previous</button>
+      <button type="submit" [disabled]="checkoutForm.invalid">Place Order</button>
+    </div>
+  </form>
+</div>
