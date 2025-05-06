@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="hero-section" id="home">
+  <app-hero></app-hero>
+</div>
+
+<div class="features-section" id="features">
+  <app-features></app-features>
+</div>
+
+<div class="pricing-section" id="pricing">
+  <app-pricing></app-pricing>
+</div>
+
+<div class="testimonials-section" id="testimonials">
+  <app-testimonials></app-testimonials>
+</div>
+
+<div class="contact-section" id="contact">
+  <app-contact></app-contact>
+</div>
+
+<div class="footer-section" id="footer">
+  <app-footer></app-footer>
+</div>
+
+<nav class="scroll-spy-nav">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div *ngIf="isLoading" class="loading-spinner">
+  <p>Loading...</p>
+</div>
